@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Test BIPA Level Sec 3 - WNA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        
+        .student-info {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .student-info h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .input-group input {
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .section h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .text-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 10px;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .question h4 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        
+        .textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #718096;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #4a5568;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s;
+            width: 0%;
+        }
+        
+        .timer {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .audio-player {
+            background: #e6fffa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .audio-player button {
+            background: #38b2ac;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .infographic {
+            background: #f0fff4;
+            border: 2px dashed #68d391;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .results {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .score {
+            font-size: 3em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Pre-Test Bahasa Indonesia</h1>
+            <p>Level Sec 3 - WNA (Warga Negara Asing)</p>
+            <p>Waktu: 60 menit</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="timer" id="timer">Waktu: 60:00</div>
+        
+        <!-- Data Siswa -->
+        <div class="student-info" id="studentInfo">
+            <h3>Data Siswa</h3>
+            <div class="input-group">
+                <input type="text" id="studentName" placeholder="Nama Lengkap" required>
+                <input type="text" id="studentClass" placeholder="Kelas" required>
+            </div>
+            <div class="input-group">
+                <input type="text" id="studentCountry" placeholder="Negara Asal" required>
+                <input type="date" id="testDate" required>
+            </div>
+            <button class="btn btn-primary" onclick="startTest()">Mulai Pre-Test</button>
+        </div>
+        
+        <!-- Bagian 1: Membaca -->
+        <div class="section" id="section1">
+            <h2>Bagian 1: Membaca dan Memirsa (20 menit)</h2>
+            
+            <div class="text-box">
+                <h3>Teks 1: Keluarga Pak Ahmad</h3>
+                <p>Nama saya Ahmad. Saya tinggal di Jakarta bersama keluarga. Istri saya bernama Siti dan kami memiliki dua anak. Anak pertama bernama Budi, dia berusia 15 tahun. Anak kedua bernama Maya, dia berusia 12 tahun. Setiap pagi, kami sarapan bersama di ruang makan.</p>
+            </div>
+            
+            <div class="question">
+                <h4>1. Siapa nama istri Pak Ahmad?</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a"> Maya
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b"> Siti
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c"> Budi
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>2. Di mana keluarga Pak Ahmad tinggal?</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a"> Bandung
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b"> Surabaya
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c"> Jakarta
+                    </label>
+                </div>
+            </div>
+            
+            <div class="text-box">
+                <h3>Teks 2: Cara Membuat Teh Manis</h3>
+                <p><strong>Bahan:</strong> 1 kantong teh, 2 sendok gula, 1 gelas air panas</p>
+                <p><strong>Cara membuat:</strong></p>
+                <p>1. Masukkan kantong teh ke dalam gelas</p>
+                <p>2. Tuangkan air panas ke dalam gelas</p>
+                <p>3. Tambahkan gula dan aduk</p>
+                <p>4. Teh manis siap diminum</p>
+            </div>
+            
+            <div class="question">
+                <h4>3. Apa langkah pertama membuat teh manis?</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="a"> Tuangkan air panas
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="b"> Masukkan kantong teh ke dalam gelas
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="c"> Tambahkan gula
+                    </label>
+                </div>
+            </div>
+            
+            <div class="infographic">
+                <h3>Gambar: Keluarga di Ruang Tamu</h3>
+                <p>[Gambar menunjukkan: Ayah duduk di sofa membaca koran, Ibu memasak di dapur, dua anak bermain di lantai, televisi menyala menampilkan berita]</p>
+            </div>
+            
+            <div class="question">
+                <h4>4. Sebutkan 2 aktivitas yang terlihat dalam gambar:</h4>
+                <textarea class="textarea" name="q4" placeholder="Tuliskan 2 aktivitas yang Anda lihat..."></textarea>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="previousSection()" disabled>Sebelumnya</button>
+                <button class="btn btn-primary" onclick="nextSection()">Selanjutnya</button>
+            </div>
+        </div>
+        
+        <!-- Bagian 2: Kosakata dan Tata Bahasa -->
+        <div class="section" id="section2">
+            <h2>Bagian 2: Kosakata dan Tata Bahasa (15 menit)</h2>
+            
+            <div class="question">
+                <h4>5. Pilih kata sambung yang tepat untuk melengkapi kalimat: "Saya suka nasi ... sayur"</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a"> dan
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b"> tetapi
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c"> karena
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>6. Manakah kata serapan dari bahasa asing?</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a"> meja
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b"> komputer
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c"> rumah
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>7. Lengkapi kalimat: "Ibu memasak di dapur ... ayah membaca koran"</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a"> dan
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b"> tetapi
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c"> karena
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>8. Tandai kata kerja dalam kalimat ini: "Anak-anak bermain di taman"</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a"> anak-anak
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b"> bermain
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c"> taman
+                    </label>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="previousSection()">Sebelumnya</button>
+                <button class="btn btn-primary" onclick="nextSection()">Selanjutnya</button>
+            </div>
+        </div>
+        
+        <!-- Bagian 3: Menulis -->
+        <div class="section" id="section3">
+            <h2>Bagian 3: Menulis (15 menit)</h2>
+            
+            <div class="question">
+                <h4>9. Tuliskan 2 kalimat tentang keluarga Anda. Gunakan kata "saya" dalam kalimat:</h4>
+                <textarea class="textarea" name="q9" placeholder="Contoh: Saya tinggal bersama keluarga..."></textarea>
+            </div>
+            
+            <div class="question">
+                <h4>10. Lengkapi teks prosedur berikut:</h4>
+                <div class="text-box">
+                    <p><strong>Cara Mencuci Tangan:</strong></p>
+                    <p>1. _______ tangan dengan air</p>
+                    <p>2. Gunakan sabun</p>
+                    <p>3. _______ tangan selama 20 detik</p>
+                    <p>4. Bilas dengan air bersih</p>
+                </div>
+                <textarea class="textarea" name="q10" placeholder="Lengkapi langkah 1 dan 3..."></textarea>
+            </div>
+            
+            <div class="question">
+                <h4>11. Buat 1 kalimat menggunakan kata "tetapi":</h4>
+                <textarea class="textarea" name="q11" placeholder="Contoh: Saya suka es krim tetapi..."></textarea>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="previousSection()">Sebelumnya</button>
+                <button class="btn btn-primary" onclick="nextSection()">Selanjutnya</button>
+            </div>
+        </div>
+        
+        <!-- Bagian 4: Menyimak -->
+        <div class="section" id="section4">
+            <h2>Bagian 4: Menyimak (10 menit)</h2>
+            
+            <div class="audio-player">
+                <h3>Audio: Aktivitas Sehari-hari Nina</h3>
+                <p>Klik tombol untuk mendengarkan audio:</p>
+                <button onclick="playAudio()">Putar Audio</button>
+                <button onclick="pauseAudio()">Pause</button>
+                <p><em>Transkrip (untuk simulasi): "Nama saya Nina. Setiap pagi saya bangun jam 6. Saya mandi dan sarapan. Kemudian saya pergi ke sekolah naik bus. Di sekolah saya belajar matematika dan bahasa Indonesia."</em></p>
+            </div>
+            
+            <div class="question">
+                <h4>12. Jam berapa Nina bangun setiap pagi?</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q12" value="a"> Jam 5
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="b"> Jam 6
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="c"> Jam 7
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>13. Bagaimana Nina pergi ke sekolah?</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q13" value="a"> Naik sepeda
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="b"> Naik bus
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="c"> Jalan kaki
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>14. Sebutkan 2 mata pelajaran yang disebutkan dalam audio:</h4>
+                <textarea class="textarea" name="q14" placeholder="Tuliskan 2 mata pelajaran..."></textarea>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="previousSection()">Sebelumnya</button>
+                <button class="btn btn-primary" onclick="finishTest()">Selesai</button>
+            </div>
+        </div>
+        
+        <!-- Hasil -->
+        <div class="section" id="results">
+            <div class="results">
+                <h2>Hasil Pre-Test</h2>
+                <div class="score" id="finalScore">0/14</div>
+                <p>Terima kasih telah mengikuti Pre-Test BIPA Level Sec 3</p>
+                <button class="btn btn-primary" onclick="downloadResults()">Unduh Hasil</button>
+                <button class="btn btn-secondary" onclick="restartTest()">Ulangi Test</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentSection = 0;
+        let totalSections = 4;
+        let timeLeft = 3600; // 60 menit dalam detik
+        let timer;
+        let answers = {};
+        
+        const correctAnswers = {
+            q1: 'b', q2: 'c', q3: 'b', q5: 'a', q6: 'b', 
+            q7: 'a', q8: 'b', q12: 'b', q13: 'b'
+        };
+        
+        function startTest() {
+            const name = document.getElementById('studentName').value;
+            const studentClass = document.getElementById('studentClass').value;
+            const country = document.getElementById('studentCountry').value;
+            const date = document.getElementById('testDate').value;
+            
+            if (!name || !studentClass || !country || !date) {
+                alert('Mohon lengkapi semua data siswa');
+                return;
+            }
+            
+            document.getElementById('studentInfo').style.display = 'none';
+            document.getElementById('section1').classList.add('active');
+            startTimer();
+            updateProgress();
+        }
+        
+        function startTimer() {
+            timer = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `Waktu: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    finishTest();
+                }
+            }, 1000);
+        }
+        
+        function nextSection() {
+            saveAnswers();
+            document.getElementById(`section${currentSection + 1}`).classList.remove('active');
+            currentSection++;
+            if (currentSection <= totalSections) {
+                document.getElementById(`section${currentSection + 1}`).classList.add('active');
+                updateProgress();
+            }
+        }
+        
+        function previousSection() {
+            if (currentSection > 0) {
+                document.getElementById(`section${currentSection + 1}`).classList.remove('active');
+                currentSection--;
+                document.getElementById(`section${currentSection + 1}`).classList.add('active');
+                updateProgress();
+            }
+        }
+        
+        function updateProgress() {
+            const progress = ((currentSection + 1) / (totalSections + 1)) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        function saveAnswers() {
+            const inputs = document.querySelectorAll('input[type="radio"]:checked, textarea');
+            inputs.forEach(input => {
+                if (input.type === 'radio') {
+                    answers[input.name] = input.value;
+                } else {
+                    answers[input.name] = input.value;
+                }
+            });
+        }
+        
+        function calculateScore() {
+            let score = 0;
+            let totalQuestions = 14;
+            
+            // Soal pilihan ganda
+            for (let key in correctAnswers) {
+                if (answers[key] === correctAnswers[key]) {
+                    score++;
+                }
+            }
+            
+            // Soal essay (penilaian sederhana berdasarkan panjang jawaban)
+            const essayQuestions = ['q4', 'q9', 'q10', 'q11', 'q14'];
+            essayQuestions.forEach(q => {
+                if (answers[q] && answers[q].trim().length > 10) {
+                    score++;
+                }
+            });
+            
+            return { score, totalQuestions };
+        }
+        
+        function finishTest() {
+            clearInterval(timer);
+            saveAnswers();
+            const result = calculateScore();
+            
+            document.querySelector('.section.active').classList.remove('active');
+            document.getElementById('results').classList.add('active');
+            document.getElementById('finalScore').textContent = `${result.score}/${result.totalQuestions}`;
+            
+            const percentage = Math.round((result.score / result.totalQuestions) * 100);
+            document.getElementById('finalScore').style.color = 
+                percentage >= 70 ? '#48bb78' : percentage >= 50 ? '#ed8936' : '#e53e3e';
+        }
+        
+        function playAudio() {
+            alert('Audio dimainkan: Nina menceritakan aktivitas sehari-harinya');
+        }
+        
+        function pauseAudio() {
+            alert('Audio dijeda');
+        }
+        
+        function downloadResults() {
+            const name = document.getElementById('studentName').value;
+            const result = calculateScore();
+            const percentage = Math.round((result.score / result.totalQuestions) * 100);
+            
+            const content = `
+HASIL PRE-TEST BIPA LEVEL SEC 3 - WNA
+=====================================
+Nama: ${name}
+Kelas: ${document.getElementById('studentClass').value}
+Negara: ${document.getElementById('studentCountry').value}
+Tanggal: ${document.getElementById('testDate').value}
+
+Skor: ${result.score}/${result.totalQuestions} (${percentage}%)
+
+Level Kemampuan:
+${percentage >= 70 ? 'BAIK - Siap mengikuti pembelajaran Sec 3' : 
+  percentage >= 50 ? 'CUKUP - Perlu penguatan di beberapa area' : 
+  'PERLU BIMBINGAN - Disarankan remedial sebelum Sec 3'}
+
+Rekomendasi:
+- Fokus pada kosakata dasar dan kata sambung
+- Latihan membaca teks sederhana
+- Praktik menulis kalimat pendek
+            `;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `PreTest_${name}_${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+        }
+        
+        function restartTest() {
+            location.reload();
+        }
+        
+        // Set tanggal hari ini secara otomatis
+        document.getElementById('testDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>
