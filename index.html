@@ -362,7 +362,8 @@
             
             <div class="infographic">
                 <h3>Gambar: Keluarga di Ruang Tamu</h3>
-                <p>[Gambar menunjukkan: Ayah duduk di sofa membaca koran, Ibu memasak di dapur, dua anak bermain di lantai, televisi menyala menampilkan berita]</p>
+                <img src="keluarga-ruang-tamu.jpg" alt="Keluarga di ruang tamu" style="width: 100%; max-width: 600px; height: auto; border-radius: 10px; margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 3px solid #68d391;">
+                <p><em>Perhatikan gambar di atas dengan seksama dan jawab pertanyaan berikut</em></p>
             </div>
             
             <div class="question">
@@ -484,10 +485,12 @@
             
             <div class="audio-player">
                 <h3>Audio: Aktivitas Sehari-hari Nina</h3>
-                <p>Klik tombol untuk mendengarkan audio:</p>
-                <button onclick="playAudio()">Putar Audio</button>
-                <button onclick="pauseAudio()">Pause</button>
-                <p><em>Transkrip (untuk simulasi): "Nama saya Nina. Setiap pagi saya bangun jam 6. Saya mandi dan sarapan. Kemudian saya pergi ke sekolah naik bus. Di sekolah saya belajar matematika dan bahasa Indonesia."</em></p>
+                <p>Dengarkan audio berikut dengan seksama:</p>
+                <audio controls style="width: 100%; margin: 15px 0; padding: 10px; background: white; border-radius: 8px;">
+                    <source src="audio-nina.mp3" type="audio/mpeg">
+                    Browser Anda tidak mendukung pemutar audio HTML5.
+                </audio>
+                <p><em>Setelah mendengarkan audio, jawab pertanyaan di bawah ini.</em></p>
             </div>
             
             <div class="question">
@@ -615,7 +618,7 @@
         <div class="section" id="results">
             <div class="results">
                 <h2>Hasil Pre-Test</h2>
-                <div class="score" id="finalScore">0/14</div>
+                <div class="score" id="finalScore">0/20</div>
                 <p>Terima kasih telah mengikuti Pre-Test BIPA Level Sec 3</p>
                 <button class="btn btn-primary" onclick="downloadResults()">Unduh Hasil</button>
                 <button class="btn btn-secondary" onclick="restartTest()">Ulangi Test</button>
@@ -737,14 +740,6 @@
             const percentage = Math.round((result.score / result.totalQuestions) * 100);
             document.getElementById('finalScore').style.color = 
                 percentage >= 70 ? '#48bb78' : percentage >= 50 ? '#ed8936' : '#e53e3e';
-        }
-        
-        function playAudio() {
-            alert('Audio dimainkan: Nina menceritakan aktivitas sehari-harinya');
-        }
-        
-        function pauseAudio() {
-            alert('Audio dijeda');
         }
         
         function downloadResults() {
