@@ -273,14 +273,14 @@
         <div class="header">
             <h1>Pre-Test Bahasa Indonesia</h1>
             <p>Level Sec 3 - WNA (Warga Negara Asing)</p>
-            <p>Waktu: 60 menit</p>
+            <p>Waktu: 70 menit</p>
         </div>
         
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
         
-        <div class="timer" id="timer">Waktu: 60:00</div>
+        <div class="timer" id="timer">Waktu: 70:00</div>
         
         <!-- Data Siswa -->
         <div class="student-info" id="studentInfo">
@@ -483,14 +483,12 @@
             <h2>Bagian 4: Menyimak (10 menit)</h2>
             
             <div class="audio-player">
-    <h3>Audio: Aktivitas Sehari-hari Nina</h3>
-    <p>Dengarkan audio berikut dengan seksama:</p>
-    <audio controls style="width: 100%; margin: 15px 0; padding: 10px; background: white; border-radius: 8px;">
-        <source src="audio-nina.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung pemutar audio HTML5.
-    </audio>
-    <p><em>Setelah mendengarkan audio, jawab pertanyaan di bawah ini.</em></p>
-</div>
+                <h3>Audio: Aktivitas Sehari-hari Nina</h3>
+                <p>Klik tombol untuk mendengarkan audio:</p>
+                <button onclick="playAudio()">Putar Audio</button>
+                <button onclick="pauseAudio()">Pause</button>
+                <p><em>Transkrip (untuk simulasi): "Nama saya Nina. Setiap pagi saya bangun jam 6. Saya mandi dan sarapan. Kemudian saya pergi ke sekolah naik bus. Di sekolah saya belajar matematika dan bahasa Indonesia."</em></p>
+            </div>
             
             <div class="question">
                 <h4>12. Jam berapa Nina bangun setiap pagi?</h4>
@@ -508,22 +506,7 @@
             </div>
             
             <div class="question">
-                <h4>13. Apa yang Nina makan untuk sarapan ?</h4>
-                <div class="options">
-                    <label class="option">
-                        <input type="radio" name="q12" value="a"> Jam 5
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="q12" value="b"> Jam 6
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="q12" value="c"> Jam 7
-                    </label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <h4>14. Bagaimana Nina pergi ke sekolah?</h4>
+                <h4>13. Bagaimana Nina pergi ke sekolah?</h4>
                 <div class="options">
                     <label class="option">
                         <input type="radio" name="q13" value="a"> Naik sepeda
@@ -538,34 +521,88 @@
             </div>
             
             <div class="question">
-                <h4>15. Berapa lama perjalanan Nina ke sekolah?</h4>
+                <h4>14. Sebutkan 2 mata pelajaran yang disebutkan dalam audio:</h4>
+                <textarea class="textarea" name="q14" placeholder="Tuliskan 2 mata pelajaran..."></textarea>
+            </div>
+            
+            <div class="question">
+                <h4>15. Apa yang Nina makan untuk sarapan?</h4>
                 <div class="options">
                     <label class="option">
-                        <input type="radio" name="q12" value="a"> Jam 5
+                        <input type="radio" name="q15" value="a"> Roti dan susu
                     </label>
                     <label class="option">
-                        <input type="radio" name="q12" value="b"> Jam 6
+                        <input type="radio" name="q15" value="b"> Nasi goreng dengan telur
                     </label>
                     <label class="option">
-                        <input type="radio" name="q12" value="c"> Jam 7
+                        <input type="radio" name="q15" value="c"> Mie ayam
                     </label>
                 </div>
             </div>
             
             <div class="question">
-                <h4>16. Sebutkan 2 mata pelajaran yang disebutkan dalam audio?</h4>
-                <textarea class="textarea" name="q14" placeholder="Tuliskan 2 mata pelajaran..."></textarea>
+                <h4>16. Berapa lama perjalanan Nina ke sekolah?</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q16" value="a"> 20 menit
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="b"> 30 menit
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="c"> 45 menit
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>17. Mengapa Nina suka pelajaran Bahasa Indonesia?</h4>
+                <textarea class="textarea" name="q17" placeholder="Tuliskan alasan Nina..."></textarea>
             </div>
             
             <div class="navigation">
                 <button class="btn btn-secondary" onclick="previousSection()">Sebelumnya</button>
-                <button class="btn btn-primary" onclick="finishTest()">Selesai</button>
+                <button class="btn btn-primary" onclick="nextSection()">Selanjutnya</button>
             </div>
         </div>
         
-        <div class="question">
-                <h4>17. Mengapa Nina suka pelajaran Bahasa Indonesia?</h4>
-                <textarea class="textarea" name="q14" placeholder="Tuliskan 2 mata pelajaran..."></textarea>
+        <!-- Bagian 5: Soal Tambahan -->
+        <div class="section" id="section5">
+            <h2>Bagian 5: Soal Tambahan (10 menit)</h2>
+            
+            <div class="question">
+                <h4>18. Pilih kalimat yang menggunakan kata kerja dengan benar:</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q18" value="a"> Saya pergi sekolah kemarin
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="b"> Saya akan pergi ke sekolah besok
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="c"> Saya pergi sekolah besok kemarin
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>19. Lengkapi kalimat: "Hari ini cuaca sangat panas, ... saya tetap pergi ke sekolah"</h4>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q19" value="a"> dan
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="b"> tetapi
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="c"> karena
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h4>20. Tuliskan 1 kalimat tentang kegiatan yang Anda lakukan di rumah:</h4>
+                <textarea class="textarea" name="q20" placeholder="Contoh: Di rumah saya membantu ibu..."></textarea>
             </div>
             
             <div class="navigation">
@@ -588,14 +625,15 @@
     
     <script>
         let currentSection = 0;
-        let totalSections = 4;
-        let timeLeft = 3600; // 60 menit dalam detik
+        let totalSections = 5;
+        let timeLeft = 4200; // 70 menit dalam detik
         let timer;
         let answers = {};
         
         const correctAnswers = {
             q1: 'b', q2: 'c', q3: 'b', q5: 'a', q6: 'b', 
-            q7: 'a', q8: 'b', q12: 'b', q13: 'b'
+            q7: 'a', q8: 'b', q12: 'b', q13: 'b', q15: 'b', 
+            q16: 'b', q18: 'b', q19: 'b'
         };
         
         function startTest() {
@@ -667,7 +705,7 @@
         
         function calculateScore() {
             let score = 0;
-            let totalQuestions = 14;
+            let totalQuestions = 20;
             
             // Soal pilihan ganda
             for (let key in correctAnswers) {
@@ -677,7 +715,7 @@
             }
             
             // Soal essay (penilaian sederhana berdasarkan panjang jawaban)
-            const essayQuestions = ['q4', 'q9', 'q10', 'q11', 'q14'];
+            const essayQuestions = ['q4', 'q9', 'q10', 'q11', 'q14', 'q17', 'q20'];
             essayQuestions.forEach(q => {
                 if (answers[q] && answers[q].trim().length > 10) {
                     score++;
